@@ -4,6 +4,8 @@
 #Author: eviofekeze
 #Date: Nov 4
 
+
+#Remove docker 
 sudo apt-get remove docker docker-engine docker.io containerd runc
 sudo apt-get update -y
 sudo apt-get install \
@@ -24,7 +26,8 @@ then
 	sudo apt-get update -y
 fi
 
+# Install docker
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 
-#Test t
+#Test 
 sudo docker run hello-world
