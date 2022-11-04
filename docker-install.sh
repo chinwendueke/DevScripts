@@ -25,3 +25,6 @@ then
 fi
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+
+#Test t
+sudo docker run hello-world
