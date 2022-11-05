@@ -75,4 +75,4 @@ then
 	sudo apk add docker-compose
 else
         echo "Not compatible with operating system"
-exit
+fi
