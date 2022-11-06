@@ -1,7 +1,6 @@
 ## DevScripts
 
-This repos contains scripts for installing packages on some Linux distribution.
-the following distribution are currently supported
+This repo contains scripts for installing packages on some Linux distribution. The following distribution are currently supported
 - Ubuntu
 - CentOS
 - Alpine
