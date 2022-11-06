@@ -1,17 +1,15 @@
 #! /bin/bash
 
-#Description: Script to install Docker on Linux, This is compatible with Fedora, Alpine and Debian Family
+#Description: Script to install Docker on Linux, This is compatible with Ubuntu, Alpine and CentOS Family
 #Author: eviofekeze
 #Date: Nov 4
-
-
 
 echo "Identifying Operating System"
 DISTRO=$(cat /etc/os-release | head -1 | awk -F= '{print $2}' | sed 's/"//g')
 UBT='Ubuntu'
 COS='CentOS Linux'
-RHEL='(Fedora)|(Red Hat.*)'
-ALP='Alpine*'
+#RHEL='(Fedora)|(Red Hat.*)'
+ALP='Alpine Linux'
 
 if [[ "$DISTRO" == "$UBT" ]]
 then
@@ -52,19 +50,19 @@ then
 	sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 	sudo systemctl start docker
 	sudo docker run hello-world
-elif [[ "$DISTRO" =~ "$RHEL" ]]
-then
-	echo "OS : $DISTRO Dectected"
-	sudo yum remove docker docker-client docker-client-latest docker-common \
-                  docker-latest docker-latest-logrotate docker-logrotate \
-                  docker-engine podman runc -y
-        sudo yum install -y yum-utils
-        sudo yum-config-manager \
-                --add-repo \
-                https://download.docker.com/linux/rhel/docker-ce.repo
-        sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
-        sudo systemctl start docker
-        sudo docker run hello-world
+#elif [[ "$DISTRO" =~ "$RHEL" ]]
+#then
+#	echo "OS : $DISTRO Dectected"
+#	sudo yum remove docker docker-client docker-client-latest docker-common \
+#                  docker-latest docker-latest-logrotate docker-logrotate \
+#                  docker-engine podman runc -y
+#        sudo yum install -y yum-utils
+#        sudo yum-config-manager \
+#                --add-repo \
+#                https://download.docker.com/linux/rhel/docker-ce.repo
+#        sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+#        sudo systemctl start docker
+#        sudo docker run hello-world
 elif [[ "$DISTRO" =~ "$ALP" ]]
 then
         echo " OS: $DISTRO Detected"
