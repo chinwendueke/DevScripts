@@ -7,14 +7,13 @@
 
 
 echo "Identifying Operating System"
-#DISTRO=$(cat /etc/os-release | head -1 | awk -F= '{print $2}' | sed 's/"//g')
-DISTRO=$(grep -ioP '^Name=\K.+' /etc/os-release | sed 's/"//g')
+DISTRO=$(cat /etc/os-release | head -1 | awk -F= '{print $2}' | sed 's/"//g')
 UBT='Ubuntu'
-COS='(Centos.*)'
+COS='Centos.*'
 RHEL='(Fedora)|(Red Hat.*)'
 ALP='Alpine*'
 
-if [ $DISTRO == $UBT ]
+if [[ "$DISTRO" == "$UBT" ]]
 then
         echo "Ubuntu Detected"
 	#Remove docker
@@ -28,7 +27,7 @@ then
 	      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 	sudo apt-get update -y
 
-	if [ $? -ne 0 ]
+	if [ $? -ne 0 ]]
 	then
         	sudo chmod a+r /etc/apt/keyrings/docker.gpg
         	sudo apt-get update -y
@@ -40,7 +39,7 @@ then
 	#Test
 	sudo docker run hello-world
 
-elif [ $DISTRO =~ $COS ]
+elif [[ "$DISTRO" =~ "$COS" ]]
 then
         echo " OS: $DISTRO Detected"
 	sudo yum remove docker docker-client docker-client-latest docker-common \
@@ -53,7 +52,7 @@ then
 	sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 	sudo systemctl start docker
 	sudo docker run hello-world
-elif [ $DISTRO =~ $RHEL ]
+elif [[ "$DISTRO" =~ "$RHEL" ]]
 then
 	echo "OS : $DISTRO Dectected"
 	sudo yum remove docker docker-client docker-client-latest docker-common \
@@ -66,7 +65,7 @@ then
         sudo yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
         sudo systemctl start docker
         sudo docker run hello-world
-elif [ $DISTRO =~ $ALPHINE ]
+elif [[ "$DISTRO" =~ "$ALP" ]]
 then
         echo " OS: $DISTRO Detected"
 	sudo apk add docker
