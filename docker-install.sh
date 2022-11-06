@@ -6,6 +6,7 @@
 
 echo "Identifying Operating System"
 DISTRO=$(cat /etc/os-release | head -1 | awk -F= '{print $2}' | sed 's/"//g')
+#DISTRO=$(. /etc/os-release && echo "$ID")
 UBT='Ubuntu'
 COS='CentOS Linux'
 #RHEL='(Fedora)|(Red Hat.*)'
