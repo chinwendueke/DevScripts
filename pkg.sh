@@ -24,7 +24,11 @@ then
 elif [[ "$DISTRO" =~ "$ALP" ]]
 then
         echo " OS: $DISTRO Detected"
+<<<<<<< HEAD
 	sudo apk add -y git vim net-tools sysstat zip wget curl
+=======
+	sudo apk add git vim net-tools sysstat zip wget curl
+>>>>>>> d7b6ca0d89db3ff27d9af030ae410ea50855b11b
 else
         echo "Not compatible with operating system"
 fi
