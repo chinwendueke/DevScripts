@@ -1,8 +1,8 @@
 #! /bin/bash
 
 #Description: Script to install Docker on Linux, This is compatible with Ubuntu, Alpine and CentOS Family
-#Author: eviofekeze
-#Date: Nov 4
+#Author: Chinwendu Eke
+#Date: Nov 5th 2022
 
 echo "Identifying Operating System"
 DISTRO=$(cat /etc/os-release | head -1 | awk -F= '{print $2}' | sed 's/"//g')
